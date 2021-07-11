@@ -1,8 +1,13 @@
-function reLoad(){
-    location.reload();
-}
 const reload = document.getElementById('reload')
 const canvas = document.getElementById('game');
+
+
+const left = document.getElementById('leftbtn');
+const right = document.getElementById('rightbtn');
+const up = document.getElementById('upbtn');
+const down = document.getElementById('downbtn');
+const reset = document.getElementById('reset');
+
 const ctx = canvas.getContext('2d');
 
 class SnakeParts{
@@ -31,6 +36,10 @@ let score = 0;
 const eat = new Audio("gulp.mp3")
 const crash = new Audio("crash.mp3")
 
+
+function reLoad(){
+    location.reload();
+}
 // game loop
 function drawGame (){
     changeSnakePosition();
@@ -151,6 +160,42 @@ function checkAppleCollision(){
 
 document.body.addEventListener('keydown', keyDown);
 
+document.body.addEventListener('click', clickKey);
+
+function clickKey(e){
+    if(e.target.id == 'reset'){
+        reLoad()
+    }
+    // up
+    if(e.target.id == 'upbtn'){
+        if(yVelocity == 1)
+        return;
+        yVelocity = -1;
+        xVelocity = 0;
+    }
+    // down
+    if(e.target.id == 'downbtn'){
+        if(yVelocity == -1)
+        return;
+        yVelocity = 1;
+        xVelocity = 0;
+    }
+    // left
+    if(e.target.id == 'leftbtn'){
+        if(xVelocity == 1)
+        return;
+        yVelocity =  0;
+        xVelocity = -1;
+    }
+    // right
+    if(e.target.id == 'rightbtn'){
+        if(xVelocity == -1)
+        return;
+        yVelocity = 0;
+        xVelocity = 1;
+    }
+}
+
 function keyDown(e){
     // up
     if(e.keyCode == 38){
@@ -181,5 +226,8 @@ function keyDown(e){
         xVelocity = 1;
     }
 }
+
+
+
 
 drawGame ();

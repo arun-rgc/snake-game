@@ -19,10 +19,16 @@
             align-items: center;
             font-family: 'Alfa Slab One', cursive;
         }
+        h1{
+            margin: 0;
+        }
+        p{  margin: 0;
+            margin-bottom: 20px;
+        }
         canvas{
             box-shadow: 5px 5px 11px #000;
         }
-        button{
+        button#reload{
             display: none;
             width: auto;
             height: auto;
@@ -33,23 +39,70 @@
             cursor: pointer;
             box-shadow: 4px 4px 0px #000;
         }
-        button:hover{
+        button#reload:hover{
             box-shadow: 0px 0px 0px #000;
         }
-        P{
+        .controls{
+            display: none;
             margin: 20px;
+            text-align: center;
         }
+        .controls button{
+            padding: 0;
+            margin: 5px;
+            font-size: 30px;
+        }
+        @media(max-width:992px){
+             button#reload{
+                display: none !important;
+             }
+             p{
+                 margin: 0;
+             }
+            .controls{
+                margin: 0;
+                display: block;
+            }
+            canvas{
+                transform: scale(.9);
+            }
+            br{
+                display: none;
+            }
+        }
+        
     </style>
 </head>
 <body>
+    <h1>🐍</h1>
     <h1>Snake Game</h1>
+    <p>
+        Made with ❤️ ARUN ABRAHAM
+    </p>
     <canvas id="game" width="400" height="400"></canvas>
     <button id="reload" onclick="reLoad()">
         Restart
     </button>
-    <p>
-        Made with ❤️ ARUN ABRAHAM
-    </p>
+    <div class="controls">
+        <button id="upbtn">
+            ⬆️
+        </button>
+        <br>
+        <button id="leftbtn">
+            ⬅️
+        </button>
+        <button id="reset">
+            🔁
+        </button>
+        <button id="rightbtn">
+            ➡️
+        </button>
+        <br>
+        <button id="downbtn">
+            ⬇️
+        </button>
+    </div>
+    
     <script src="./app.js"></script>
 </body>
 </html>
